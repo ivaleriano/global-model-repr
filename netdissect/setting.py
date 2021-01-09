@@ -132,7 +132,7 @@ def load_dataset(domain, split=None, full=False, download=True):
     if domain == 'places':
         if split is None:
             split = 'val'
-        dirname = 'datasets/places/%s' % split
+        dirname = 'netdissect/bbox_cropped'
         if download and not os.path.exists(dirname):
             os.makedirs('datasets', exist_ok=True)
             torchvision.datasets.utils.download_and_extract_archive(
@@ -171,8 +171,8 @@ g_transform = torchvision.transforms.Compose([
 g_places_transform = torchvision.transforms.Compose([
     torchvision.transforms.Resize(256),
     torchvision.transforms.CenterCrop(224),
-    torchvision.transforms.ToTensor(),
-    renormalize.NORMALIZER['places_meanonly']])
+    torchvision.transforms.ToTensor()])
+    #renormalize.NORMALIZER['places_meanonly']])
 
 def load_segmenter(segmenter_name='netpqc'):
     '''Loads the segementer.'''
