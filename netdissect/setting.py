@@ -136,7 +136,7 @@ def load_dataset(domain, split=None, full=False, download=True):
         if download and not os.path.exists(dirname):
             os.makedirs('datasets', exist_ok=True)
             torchvision.datasets.utils.download_and_extract_archive(
-                'https://docs.google.com/uc?export=download&id=1cmlysJ7FbMsTmckt7groQALIV_QqEEhG',
+                'https://github.com/ivaleriano/global-model-repr/raw/master/netdissect/bbox_cropped.zip',
                 'datasets')
         return parallelfolder.ParallelImageFolders([dirname],
                 classification=True,
