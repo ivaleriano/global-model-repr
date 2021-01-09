@@ -132,19 +132,17 @@ def load_dataset(domain, split=None, full=False, download=True):
     if domain == 'places':
         if split is None:
             split = 'val'
-        dirname = 'netdissect/bbox_cropped/'
+        dirname = 'datasets/bbox_cropped'
         if download and not os.path.exists(dirname):
             os.makedirs('datasets', exist_ok=True)
             torchvision.datasets.utils.download_and_extract_archive(
-                'http://gandissect.csail.mit.edu/datasets/' +
-                'places_%s.zip' % split,
-                'datasets',
-                md5=dict(val='593bbc21590cf7c396faac2e600cd30c',
-                         train='')[split])
+                'https://docs.google.com/uc?export=download&id=1cmlysJ7FbMsTmckt7groQALIV_QqEEhG',
+                'datasets')
         return parallelfolder.ParallelImageFolders([dirname],
                 classification=True,
                 shuffle=True,
-                transform=g_places_transform)
+                transform=g_transform)
+                #transform=g_places_transform)
     else:
         # Assume lsun dataset
         if split is None:
