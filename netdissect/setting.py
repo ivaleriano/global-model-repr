@@ -132,7 +132,7 @@ def load_dataset(domain, split=None, full=False, download=True):
     if domain == 'places':
         if split is None:
             split = 'val'
-        dirname = 'netdissect/bbox_cropped'
+        dirname = 'netdissect/bbox_cropped/'
         if download and not os.path.exists(dirname):
             os.makedirs('datasets', exist_ok=True)
             torchvision.datasets.utils.download_and_extract_archive(
