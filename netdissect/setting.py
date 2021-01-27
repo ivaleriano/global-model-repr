@@ -206,7 +206,7 @@ def graph_conceptcatlist(conceptcatlist, **kwargs):
         count[c] += 1
     for c in count.keys():
         catcount[c[1]] += 1
-    cats = ['object', 'part', 'material', 'texture', 'color']
+    cats = ['Atelectasis', 'Cardiomegaly', 'Effusion', 'Infiltrate', 'Mass', 'Nodule', 'Pneumonia', 'Pneumothorax', 'Consolidation', 'Edema', 'Emphysema', 'Fibrosis', 'Pleural_Thickening', 'Hernia']
     catorder = dict((c, i) for i, c in enumerate(cats))
     sorted_labels = sorted(count.keys(),
         key=lambda x: (catorder[x[1]], -count[x]))
