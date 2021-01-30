@@ -199,14 +199,15 @@ def load_segmenter(segmenter_name='netpqc'):
     segcatlabels = segmodel.get_label_and_category_names()[0]
     return segmodel, seglabels, segcatlabels
 
-def graph_conceptcatlist(conceptcatlist, **kwargs):
+def graph_conceptcatlist(conceptcatlist, cats = None, **kwargs):
     count = collections.defaultdict(int)
     catcount = collections.defaultdict(int)
     for c in conceptcatlist:
         count[c] += 1
     for c in count.keys():
         catcount[c[1]] += 1
-    cats = ['Atelectasis', 'Cardiomegaly', 'Effusion', 'Infiltrate', 'Mass', 'Nodule', 'Pneumonia', 'Pneumothorax', 'Consolidation', 'Edema', 'Emphysema', 'Fibrosis', 'Pleural_Thickening', 'Hernia']
+    if cats is None:
+        cats = ['object', 'part', 'material', 'texture', 'color']
     catorder = dict((c, i) for i, c in enumerate(cats))
     sorted_labels = sorted(count.keys(),
         key=lambda x: (catorder[x[1]], -count[x]))
